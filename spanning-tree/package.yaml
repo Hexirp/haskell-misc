@@ -1,10 +1,10 @@
 name:                spanning-tree
 version:             0.1.0.0
-github:              "githubuser/spanning-tree"
+github:              Hexirp/haskell-misc
 license:             BSD-3-Clause
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2025 Author name here"
+author:              Hexirp
+maintainer:          https://github.com/Hexirp/haskell-misc/issues
+copyright:           "2025 Hexirp"
 
 extra-source-files:
 - README.md
