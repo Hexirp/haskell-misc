@@ -9,6 +9,7 @@ import Data.GraphViz.Types.Generalised as GraphViz (DotEdge (DotEdge), DotGraph 
 import Data.GraphViz.Types.Monadic (digraph, edge)
 import Data.Maybe (mapMaybe)
 import Data.Text.Lazy as LazyText (Text)
+import List (processEdgeList)
 
 processDotText :: String -> LazyText.Text -> LazyText.Text
 processDotText rootNodeName dotText =
@@ -17,9 +18,6 @@ processDotText rootNodeName dotText =
 processDotGraph :: String -> GraphViz.DotGraph String -> GraphViz.DotGraph String
 processDotGraph rootNodeName dotGraph =
   buildDotGraph $ processEdgeList rootNodeName $ extractEdgeList dotGraph
-
-processEdgeList :: String -> [(String, String)] -> [(String, String)]
-processEdgeList edgeList rootNodeName = undefined
 
 extractEdgeList :: GraphViz.DotGraph String -> [(String, String)]
 extractEdgeList dotGraph = mapMaybe extractEdge $ toList $ GraphViz.graphStatements dotGraph
