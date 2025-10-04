@@ -35,6 +35,7 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , containers
     , graphviz
     , text
   default-language: Haskell2010
@@ -43,6 +44,7 @@ executable spanning-tree-exe
   main-is: Main.hs
   other-modules:
       Graph
+      List
       Paths_spanning_tree
   autogen-modules:
       Paths_spanning_tree
@@ -51,6 +53,7 @@ executable spanning-tree-exe
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , containers
     , graphviz
     , spanning-tree
     , text
@@ -68,6 +71,7 @@ test-suite spanning-tree-test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , containers
     , graphviz
     , spanning-tree
     , text
