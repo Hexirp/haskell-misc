@@ -42,6 +42,7 @@ library
 executable spanning-tree-exe
   main-is: Main.hs
   other-modules:
+      Graph
       Paths_spanning_tree
   autogen-modules:
       Paths_spanning_tree
