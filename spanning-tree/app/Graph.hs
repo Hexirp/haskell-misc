@@ -2,16 +2,13 @@
 
 module Graph (processDotText) where
 
-import Data.Maybe (mapMaybe)
-
 import Data.Foldable (Foldable (toList), forM_)
-
-import Data.Text.Lazy as LazyText (Text)
-
-import Data.GraphViz (parseDotGraph, GraphID (Str))
+import Data.GraphViz (GraphID (Str), parseDotGraph)
 import Data.GraphViz.Printing (PrintDot (toDot), renderDot)
-import Data.GraphViz.Types.Generalised as GraphViz (DotStatement (DE), DotGraph (graphStatements), DotEdge (DotEdge))
+import Data.GraphViz.Types.Generalised as GraphViz (DotEdge (DotEdge), DotGraph (graphStatements), DotStatement (DE))
 import Data.GraphViz.Types.Monadic (digraph, edge)
+import Data.Maybe (mapMaybe)
+import Data.Text.Lazy as LazyText (Text)
 
 processDotText :: String -> LazyText.Text -> LazyText.Text
 processDotText rootNodeName dotText =

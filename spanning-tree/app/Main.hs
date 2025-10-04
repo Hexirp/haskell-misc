@@ -1,10 +1,8 @@
 module Main (main) where
 
-import System.Environment (getArgs)
-
-import Data.Text.Lazy.IO as LazyText (readFile, putStrLn)
-
+import Data.Text.Lazy.IO as LazyText (putStrLn, readFile)
 import Graph (processDotText)
+import System.Environment (getArgs)
 
 main :: IO ()
 main = do
