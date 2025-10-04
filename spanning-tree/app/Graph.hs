@@ -23,12 +23,12 @@ extractEdgeList :: GraphViz.DotGraph String -> [(String, String)]
 extractEdgeList dotGraph = mapMaybe extractEdge $ toList $ GraphViz.graphStatements dotGraph
 
 extractEdge :: DotStatement String -> Maybe (String, String)
-extractEdge (DE (DotEdge start_point end_point _)) = Just (start_point, end_point)
+extractEdge (DE (DotEdge start_node end_node _)) = Just (start_node, end_node)
 extractEdge _ = Nothing
 
 buildDotGraph :: [(String, String)] -> GraphViz.DotGraph String
 buildDotGraph edgeList = digraph (Str "spanning_tree") $ do
-  forM_ edgeList $ \(start_point, end_point) -> edge start_point end_point []
+  forM_ edgeList $ \(start_node, end_node) -> edge start_node end_node []
 
 renderDotGraph :: GraphViz.DotGraph String -> LazyText.Text
 renderDotGraph = renderDot . toDot
