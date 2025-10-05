@@ -1,8 +1,8 @@
 module List (processEdgeList) where
 
-import Data.Map as Map (Map, insertWith, empty, singleton, findWithDefault, insert)
+import Data.Map as Map (Map, empty, findWithDefault, insert, insertWith, singleton)
 import Data.Sequence as Seq (Seq (Empty, (:<|)), singleton, (|>))
-import Data.Set as Set (Set, singleton, notMember, insert, fromList, toList)
+import Data.Set as Set (Set, fromList, insert, notMember, singleton, toList)
 
 processEdgeList :: String -> [(String, String)] -> [(String, String)]
 processEdgeList rootNode edgeList =
@@ -29,6 +29,6 @@ bfsShortestPathEdgeListMap_ graph_map visited_node_set focused_node_queue shorte
       in
         bfsShortestPathEdgeListMap_ graph_map new_visited_node_set new_focused_node_queue new_shortest_path_edge_list_map
 
-extractShortestPathEdgeList :: [String] -> Set.Set (String, String) 
+extractShortestPathEdgeList :: [String] -> Set.Set (String, String)
 extractShortestPathEdgeList shortestPathEdgeList =
   Set.fromList $ zip (reverse shortestPathEdgeList) (drop 1 $ reverse shortestPathEdgeList)
