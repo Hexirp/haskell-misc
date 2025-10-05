@@ -1,8 +1,8 @@
 module List (processEdgeList) where
 
-import Data.Map as Map (Map, insertWith, empty, singleton)
-import Data.Sequence as Seq (Seq (Empty, (:<|)), singleton)
-import Data.Set as Set (Set, singleton)
+import Data.Map as Map (Map, insertWith, empty, singleton, findWithDefault, insert)
+import Data.Sequence as Seq (Seq (Empty, (:<|)), singleton, (|>))
+import Data.Set as Set (Set, singleton, notMember, insert)
 
 processEdgeList :: String -> [(String, String)] -> [(String, String)]
 processEdgeList rootNode edgeList =
@@ -19,7 +19,15 @@ bfsShortestPathEdgeListMap_ :: Map.Map String [String] -> Set.Set String -> Seq.
 bfsShortestPathEdgeListMap_ graph_map visited_node_set focused_node_queue shortest_path_edge_list_map =
   case focused_node_queue of
     Empty -> shortest_path_edge_list_map
-    current_focused_node :<| rest_focused_node_queue -> undefined
+    current_focused_node :<| rest_focused_node_queue ->
+      let
+        neighbor_node_list = Map.findWithDefault [] current_focused_node graph_map
+        new_neighbor_node_list = filter (`Set.notMember` visited_node_set) neighbor_node_list
+        new_visited_node_set = foldr Set.insert visited_node_set new_neighbor_node_list
+        new_focused_node_queue = foldl (|>) rest_focused_node_queue new_neighbor_node_list
+        new_shortest_path_edge_list_map = foldl (\new_map new_node -> Map.insert new_node (current_focused_node : Map.findWithDefault [] current_focused_node new_map) new_map) shortest_path_edge_list_map new_neighbor_node_list
+      in
+        bfsShortestPathEdgeListMap_ graph_map new_visited_node_set new_focused_node_queue new_shortest_path_edge_list_map
 
 extractShortestPathEdgeList :: [String] -> [(String, String)] 
 extractShortestPathEdgeList shortestPathEdgeList =
