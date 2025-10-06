@@ -9,7 +9,7 @@ import Data.GraphViz.Types.Generalised as GraphViz (DotEdge (DotEdge), DotGraph 
 import Data.GraphViz.Types.Monadic (digraph, edge)
 import Data.Maybe (mapMaybe)
 import Data.Text.Lazy as LazyText (Text)
-import List (processEdgeList)
+import SpanningTree (processEdgeList)
 
 processDotText :: String -> LazyText.Text -> LazyText.Text
 processDotText rootNodeName dotText =
