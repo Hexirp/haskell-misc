@@ -31,4 +31,7 @@ bfsShortestPathEdgeListMap_ graph_map visited_node_set focused_node_queue shorte
 
 extractShortestPathEdgeList :: [String] -> Set.Set (String, String)
 extractShortestPathEdgeList shortestPathEdgeList =
-  Set.fromList $ zip (reverse shortestPathEdgeList) (drop 1 $ reverse shortestPathEdgeList)
+  let
+    reversedShortestPathEdgeList = reverse shortestPathEdgeList
+  in
+    Set.fromList $ zip reversedShortestPathEdgeList (drop 1 reversedShortestPathEdgeList)
